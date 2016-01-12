@@ -1,11 +1,11 @@
-################
+##########
 # Quiz Week 3
-################
+##########
 
-################
 # Author: Avery Sandborn
 # Date: January 12, 2016
-################
+
+##########
 
 library(datasets)
 data(iris)
