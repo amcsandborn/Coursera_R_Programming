@@ -2,12 +2,11 @@
 # Programming Assignment 1: Part 3
 ##########
 
-##########
 # Author: Avery Sandborn
 # Date: January 11, 2016
-##########
 
 ##########
+
 # Write a function that takes a directory of data files and a threshold for 
 #   complete cases and calculates the correlation between sulfate and nitrate for 
 #   monitor locations where the number of completely observed cases (on all 
@@ -15,6 +14,7 @@
 #   of correlations for the monitors that meet the threshold requirement. If no 
 #   monitors meet the threshold requirement, then the function should return a 
 #   numeric vector of length 0.
+
 ##########
 
 # Set working directory
