@@ -1,11 +1,13 @@
-# Script Name: corn_yield_v03.R
-# Date: 11/24/15
+##########
+# County Correlations
+##########
+
 # Author: Avery Sandborn
-# Description: Calculate R2 and RMSE values between national soybean yield estimates and each 
+# Date: 11/24/15
+
+# Calculate R2 and RMSE values between national soybean yield estimates and each 
 #   county in the Soybean States. Some counties do not have data for all years. Recode 
 #   counties with 2 or less data points as NA for all calculations.  
-
-##########################################################################
 
 # Helpful Websites
 # http://www.gardenersown.co.uk/education/lectures/r/correl.htm#correlation
@@ -13,7 +15,7 @@
 # http://stackoverflow.com/questions/6882709/how-do-i-deal-with-nas-in-residuals-in-a-regression-in-r
 # http://earlh.com/blog/2009/06/29/column-names-of-r-data-frames/
 
-##########################################################################
+##########
 
 # Install libraries
 #install.packages("Metrics")
