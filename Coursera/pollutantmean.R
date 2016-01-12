@@ -2,16 +2,16 @@
 # Programming Assignment 1: Part 1
 ##########
 
-##########
 # Author: Avery Sandborn
 # Date: January 11, 2016
-##########
 
 ##########
+
 # Write a function named 'pollutantmean' that calculates the mean of a pollutant 
 #   (sulfate or nitrate) across a specified list of monitors. The function reads
 #   that monitor's particulate matter data from the directory and returns the mean 
 #   of the polutant accross all of the monitors, ignoring all NA values
+
 ##########
 
 # Set working directory
