@@ -10,10 +10,10 @@
 #   counties with 2 or less data points as NA for all calculations.  
 
 # Helpful Websites
-# http://www.gardenersown.co.uk/education/lectures/r/correl.htm#correlation
-# http://www.statmethods.net/input/missingdata.html
-# http://stackoverflow.com/questions/6882709/how-do-i-deal-with-nas-in-residuals-in-a-regression-in-r
-# http://earlh.com/blog/2009/06/29/column-names-of-r-data-frames/
+#   http://www.gardenersown.co.uk/education/lectures/r/correl.htm#correlation
+#   http://www.statmethods.net/input/missingdata.html
+#   http://stackoverflow.com/questions/6882709/how-do-i-deal-with-nas-in-residuals-in-a-regression-in-r
+#   http://earlh.com/blog/2009/06/29/column-names-of-r-data-frames/
 
 ##########
 
