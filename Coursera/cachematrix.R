@@ -6,8 +6,6 @@
 # Date: January 12, 2016
 
 ##########
-# Description
-##########
 
 # Write an R function that is able to cache potentially time-consuming 
 #   computations. For example, taking the mean of a numeric vector is typically 
@@ -19,8 +17,6 @@
 #   advantage of the scoping rules of the R language and how they can be 
 #   manipulated to preserve state inside of an R object.
 
-##########
-# Assignment Answer
 ##########
 
 # Create a function called makeCacheMatrix that does the following: 
