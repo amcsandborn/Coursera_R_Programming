@@ -3,8 +3,8 @@
 ################
 
 ################
-Author: Avery Sandborn
-Date: January 11, 2016
+# Author: Avery Sandborn
+# Date: January 11, 2016
 ################
 
 # Read in data
