@@ -3,8 +3,8 @@
 ################
 
 ################
-Author: Avery Sandborn
-Date: January 12, 2016
+# Author: Avery Sandborn
+# Date: January 12, 2016
 ################
 
 library(datasets)
