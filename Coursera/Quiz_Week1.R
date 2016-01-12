@@ -1,11 +1,11 @@
-################
-# Quiz 1
-################
+##########
+# Quiz Week 1
+##########
 
-################
 # Author: Avery Sandborn
 # Date: January 11, 2016
-################
+
+##########
 
 # Read in data
 data <-"C:/Users/sandav/Downloads/quiz1_data/hw1_data.csv"
