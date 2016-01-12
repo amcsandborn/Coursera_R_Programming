@@ -3,4 +3,4 @@ Assignment code for the Coursera R Programming online course.
 
 https://www.coursera.org/learn/r-programming
 
-© Avery Sandborn, 01/05/16 - 02/08/16
+© Avery Sandborn, 2016
