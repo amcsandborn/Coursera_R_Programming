@@ -1,5 +1,5 @@
 # Coursera_R_Programming
-Assignment code for the Coursera R Programming online course.
+Free Coursera R Programming online course.
 
 https://www.coursera.org/learn/r-programming
 
