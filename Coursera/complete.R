@@ -4,6 +4,7 @@
 
 # Author: Avery Sandborn
 # Date: January 11, 2016
+
 ##########
 
 # Write a function that reads a directory full of files and reports the number of 
