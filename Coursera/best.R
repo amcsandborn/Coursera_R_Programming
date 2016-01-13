@@ -1,5 +1,5 @@
 ##########
-# Programming Assignment 3, Part 1
+# Programming Assignment 3, Part 2
 ##########
 
 # Author: Avery Sandborn
