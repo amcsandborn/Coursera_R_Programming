@@ -7,6 +7,11 @@
 
 ##########
 
+# Helpful Websites:
+  # http://rspatial.r-forge.r-project.org/gallery/
+
+##########
+
 # Load the data
 library(spatstat)
 data(redwood)
@@ -104,7 +109,6 @@ spplot(sids_2, "SID79")
 
 spplot(sids_2, "NWBIR79")
 
-
 # Nicer Choropleth Map (title, axes, botom legend)
 spplot(sids_2, c("NWBIR79"), names.attr = c("1979"), colorkey=list(space="bottom"), scales = list(draw = TRUE), main = "Total Non-White Births in North Carolina, 1979", as.table = TRUE)
 
@@ -136,16 +140,13 @@ topo_spdf <- SpatialPointsDataFrame(topo_mat, topo_df, proj4string = cord_ref)
 spplot(topo_spdf, "Z")
 bubble(topo_spdf, "Z")
 
-
 #############################
-
 
 # Import data into R and produce located symbol plot (color points and bubble)
 
 library(maptools)
 library(lattice)
 library(sp)
-
 
 simple_df <- read.table("N:/USERS/Avery/Spatial_Analysis_Techniques_in_R/Data/Simple_LA_OZ.txt", header = TRUE)
 simple_df
@@ -159,7 +160,3 @@ simple_spdf <- SpatialPointsDataFrame(simple_mat, simple_df, proj4string = cord_
 
 spplot(simple_spdf, "Z", scales = list(draw = TRUE), main = "Ozone Concentration in LA", as.table = TRUE)
 bubble(simple_spdf, "Z", scales = list(draw = TRUE), main = "Ozone Concentration in LA", as.table = TRUE)
-
-
-
-
