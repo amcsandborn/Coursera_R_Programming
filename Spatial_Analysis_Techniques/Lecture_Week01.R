@@ -147,7 +147,7 @@ library(lattice)
 library(sp)
 
 
-simple_df <- read.table("N:/USERS/Avery/Spatial_Analysis_Techniques_in_R/Simple_LA_OZ.txt", header = TRUE)
+simple_df <- read.table("N:/USERS/Avery/Spatial_Analysis_Techniques_in_R/Data/Simple_LA_OZ.txt", header = TRUE)
 simple_df
 
 # extract the x y values using cbind and put them into topo_mat
