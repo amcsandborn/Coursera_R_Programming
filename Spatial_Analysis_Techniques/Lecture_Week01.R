@@ -213,4 +213,3 @@ BNG <- CRS("+init=epsg:27700")
 proj4string(cycle) <- BNG
 p4s <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")
 cycle_wgs84 <- spTransform(cycle, CRS=p4s)
-
