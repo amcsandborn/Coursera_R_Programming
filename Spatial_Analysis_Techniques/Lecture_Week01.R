@@ -160,3 +160,57 @@ simple_spdf <- SpatialPointsDataFrame(simple_mat, simple_df, proj4string = cord_
 
 spplot(simple_spdf, "Z", scales = list(draw = TRUE), main = "Ozone Concentration in LA", as.table = TRUE)
 bubble(simple_spdf, "Z", scales = list(draw = TRUE), main = "Ozone Concentration in LA", as.table = TRUE)
+
+#################################
+
+# Geocoding Locations
+
+library(ggmap)
+
+locations <- c("Maidwell, England", "Vienna, Austria")
+locations
+
+geocoded_locations <- cbind(locations, geocode(locations))
+geocoded_locations
+
+# More ways of geocoding locations
+
+library(XML)
+library(rgdal)
+library(dismo)
+
+place <- geocode("Maidwell, Northamptonshire, UK")
+place
+
+# Drawing Pin Maps with Google Earth
+library(maptools)
+library(rgdal)
+library(sp)
+
+cycle <- read.csv("N:/USERS/Avery/Spatial_Analysis_Techniques_in_R/Data/London_cycle_hire_locs.csv", header = T)
+head(cycle)
+
+plot(cycle$X, cycle$Y)
+
+# Create a spatial points data frame object and add CRS projection
+coordinates(cycle) <- c("X", "Y")
+BNG <- CRS("+init=epsg:27700")
+proj4string(cycle) <- BNG
+
+# reproject points to wgs84 (used by google)
+p4s <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")
+cycle_wgs84 <- spTransform(cycle, CRS = p4s)
+
+# export data to KML
+writeOGR(cycle_wgs84, dsn = "N:/USERS/Avery/Spatial_Analysis_Techniques_in_R/Data/London_cycle_docks.kml", layer = "cycle_wgs84", driver = "KML", dataset_options = c("NameFIELD = name"))
+
+################
+
+# grid which locations are located... 
+BNG <- CRS("+init=epsg:27700")
+
+# But we need to transform data into WGS84
+proj4string(cycle) <- BNG
+p4s <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")
+cycle_wgs84 <- spTransform(cycle, CRS=p4s)
+
