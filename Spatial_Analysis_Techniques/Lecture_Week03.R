@@ -10,6 +10,8 @@
 library(spdep)
 library(maptools)
 library(sp)
+library(RColorBrewer)
+library(classInt)
 
 # Read in the polygon and plot it
 lips <- readShapePoly("N:\\USERS\\Avery\\Spatial_Analysis_Techniques_in_R\\Data\\scotlip\\scotlip.shp", IDvar = "RECORD_ID", proj4string = CRS(as.character(NA)))
@@ -68,10 +70,10 @@ unlist(attr(emp_bayes, "parameters"))
 lips_emp <- spCbind(lips, emp_bayes$estmm)
 
 spplot(lips_emp, "emp_bayes.estmm")
-
+       
 ##########
 
-# Assignment Part 1: Produce a ratio and √(chi-square map)
+# Assignment Part 1: Produce a ratio and ???(chi-square map)
 
 # Signed Chi Square Statistic
   # Squares of the differences between actual numbers in the zone and those 
@@ -79,10 +81,12 @@ spplot(lips_emp, "emp_bayes.estmm")
   # entire area divided by this expected total.
 
 # Simpler version
-# (Oi - Ei) / sqrt(Ei)
+  # (Oi - Ei) / sqrt(Ei)
 
 # Create a map fo the  sqrt(chi-square) stats for these same obs and exp counts 
 # based simply on population years at risk measure
+
+# http://personal.colby.edu/personal/m/mgimond/Spatial/Bailey_Gatrell_Auckland_child_mortality.html
 
 lips <- readShapePoly("N:\\USERS\\Avery\\Spatial_Analysis_Techniques_in_R\\Data\\scotlip\\scotlip.shp", IDvar = "RECORD_ID", proj4string = CRS(as.character(NA)))
 plot(lips)
@@ -97,7 +101,15 @@ chi_data
 
 # Join the data back into the spatial data frame to plot it
 lips <- spCbind(lips, chi_data)
-spplot(lips, "chi_data")
+
+# Make map pretty
+brks <- classIntervals(lips$chi_data, n = 11, style = "fixed", fixedBreaks = c(-11, -7, -5, -3, -1, 0, 1, 3, 5, 7, 11))
+pal2 <- brewer.pal(11,"RdYlGn")
+spplot(lips, "chi_data", at = brks$brks, col.regions = rev(pal2), scales = list(draw = TRUE), main = "Diversion from Expected Male Lip Cancer Rate", as.table = TRUE)
+
+##########
+
+
 
 ##########
 
