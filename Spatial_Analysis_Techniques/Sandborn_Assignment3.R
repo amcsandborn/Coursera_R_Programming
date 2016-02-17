@@ -154,18 +154,40 @@ moran.mc(rate, listw = contig_listw, nsim = 99)
 
 # Create a Moran Scatter Plot (MSP) and map of this as a LISA
 
+# Transform the Variable rate into z scores
+mean_rate <- mean(rate)
+mean_rate
 
+sd_rate <- sd(rate)
+sd_rate
 
+zrate <- (rate - mean_rate) / sd_rate
+zrate
 
+# Compute and Plot the Moran Scatter Plot with these normalized variables 
+  # Visual explanation of spatial autocorrelation 
+  # Vertical Axis: spatial lag = mean value of its defined neighbors 
+    # Mean of the standardized neighbors as defined in W matrix
+  # Horizontal Axis: Original variable
+    # gives standard scores for the observed values in each of the n areas
+  # Upper right: positive autocorrelation: I'm high and neighbors are high
+  # Lower Right: negative autocorrelation: I'm a high outlier and neighbors are low
+  # Lower Left: positive autocorrelation: I'm low and my neighbors are low
+  # Upper Left: negative autocorrelation: I'm a low outlier and neighbors are high
+moran.plot(zrate, listw = delaun_listw)
 
+# Compute zone values of local I, its expected values, zscore, and p value >> put into matrix
+local_delaun <- localmoran(zrate, delaun_listw)
+local_delaun
 
+# Extract specific columns and use them in standard operations 
+local_I <- local_delaun[,1]
+local_I
+hist(local_I)
 
+# Bind them back to a data frame and draw maps
+lungs <- spCbind(lungs, local_I)
+names(lungs)
 
-
-
-
-
-
-
-
-
+# Draw choropleth map of values of local moran's I that show areas unusually high or low relative to their neighbors
+spplot(lungs, "local_I", scales = list(draw = TRUE), main = "Local Moran's I", as.table = TRUE)
