@@ -185,13 +185,7 @@ hist(local_I)
 
 # Bind them back to a data frame and draw maps
 lips_extra <- spCbind(lips_extra, local_I)
-names (lips_extra)
+names(lips_extra)
 
 # Draw choropleth map of values of local moran's I that show areas unusually high or low relative to their neighbors
 spplot(lips_extra, "local_I")
-
-
-
-
-
-
