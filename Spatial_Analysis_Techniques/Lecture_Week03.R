@@ -109,13 +109,90 @@ spplot(lips, "chi_data", at = brks$brks, col.regions = rev(pal2), scales = list(
 
 ##########
 
+# Lecture Part 3.4
 
+# Basically, plot connections/links of the zones
+
+# Queens Case Contiguity: Area objects are neighbors if they share a boundary or single point
+lips_nb <- poly2nb(lips, row.names = NULL, queen = TRUE)
+summary(lips_nb)
+
+# Create reference points inside each area to be taken as in some sense representative of each area as a matrix of coordinantes 
+matrix <- coordinates(lips)
+matrix
+
+# Plot pattern of contiguities, create map of matrix and superimpose zone boundaries
+plot(lips_nb, matrix)
+plot(lips, add = TRUE)
+
+# other exampes of approaches to neighbor zones
+delauney_Scot <- tri2nb(matrix)
+plot.nb(delauney_Scot, matrix)
+plot(lips, add=TRUE)
+
+SOI_Scot <- graph2nb(soi.graph(delauney_Scot, matrix))
+plot.nb(SOI_Scot, matrix)
+plot(lips, add=TRUE)
+
+Gabriel_Scot <- graph2nb(gabrielneigh(matrix))
+plot.nb(Gabriel_Scot, matrix)
+plot(lips, add=TRUE)
+
+relative_neigh_Scot <- graph2nb(relativeneigh(matrix))
+plot.nb(relative_neigh_Scot, matrix)
+plot(lips, add=TRUE)
+
+# Alternative defined by the distances between centroids
+  # based on k = 3 nearest neighbors
+dist_3 <- knn2nb(knearneigh(matrix, k = 3))
+plot.nb(dist_3, matrix)
+plot(lips, add = TRUE)
+
+# We now have 6 possible definitions of neighborhood:
+  # lips, dist_3, delauney_Scot, SOI_Scot, Gabriel_Scot, relative_neigh_Scot
+
+# Here's a variable...
+rate
+
+# Moran's I
+  # assumes all zones have at least one neighbor
+
+# Assign binary weights to all six neighbor lists
+contig_listw <- nb2listw(lips_nb, style = "B", zero.policy = TRUE)
+dist_3_listw <- nb2listw(dist_3, style = "B")
+SOI_listw <- nb2listw(SOI_Scot, style = "B", zero.policy = TRUE)
+Gabriel_listw <- nb2listw(Gabriel_Scot, style = "B", zero.policy = TRUE)
+rel_neigh_listw <-nb2listw(relative_neigh_Scot, style = "B", zero.policy = TRUE)
+delaun_listw <- nb2listw(delauney_Scot, style = "B")
+
+# Now compute global moran's I for the 6 different neighborhood lists
+moran.test(rate, listw = contig_listw, zero.policy = TRUE)
+moran.test(rate, listw = delaun_listw)
+moran.test(rate, listw = dist_3_listw)
+moran.test(rate, listw = SOI_listw)
+moran.test(rate, listw = Gabriel_listw, zero.policy = TRUE)
+moran.test(rate, listw = rel_neigh_listw,zero.policy = TRUE)
+
+# Results show...
+  # Significant positive global spatial autocorrelation
+
+# Monte Carlo Procedure: location attributes are randomly assigned to the zones a specified number of times and a value for I calculated in each case
+  # Enables the observed value to be ranked relative to these simulations 
+
+# Monte carlo values for delaun_listw
+set.seed = (4567)
+moran.mc(rate, listw = delaun_listw, nsim = 99)
+  # Resuts confirm what we have already seen
 
 ##########
 
-# Part 2: Global Spatial Autocorrelation
+# Assignment Part 2: Global Spatial Autocorrelation
 
 # Find shapefile relating to lattice irregular polygons
+
+# Use spdep package to define and justify a W matrix
+
+# Compute and interpret Moran's I for global spatial autocorrelation
 
 # Create a choropleth map of chosen variable
 
@@ -130,7 +207,7 @@ SpatialPolygonsDataFrame
 
 ##########
 
-# Part 3: Local Spatial Autocorrelation
+# Assignment Part 3: Local Spatial Autocorrelation
 
 # Create a Moran Scatter Plot (MSP) and map of this as a LISA
 
